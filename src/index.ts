@@ -5,7 +5,7 @@ import { ShowSrv } from './show';
 (function() {
   const cardsPath = './media/';
 
-  const main = document.querySelector(".place");
+  const main = document.querySelector('.place');
   const mainCoord = {
     x: main.clientLeft,
     y: main.clientTop,
@@ -18,17 +18,21 @@ import { ShowSrv } from './show';
   
   const but = new Button('button');
   const board = new Board(5);
-  // console.log(JSON.stringify(board.showingData(4), null, 2));
+  console.log(JSON.stringify(board.getCards()));
+  console.log(JSON.stringify(board.showingData(4), null, 2));
 
   // but.clickHandler = () => {
   //   console.log('click');
   // }
 
-  const _foo = new ShowSrv(
+  const show = new ShowSrv(
+    main,
     {x: mainCoord.x, y: mainCoord.y},
     {width: mainCoord.width, height: mainCoord.height},
     {column: 5, row: 4}
   );
+
+  show.showData(board.showingData(4));
 
   
 

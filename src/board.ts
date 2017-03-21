@@ -1,6 +1,5 @@
 export class Board {
   private cardsMap: number[][];
-  private currentPosition: number[];
 
   constructor (
     public qt: number
@@ -10,7 +9,6 @@ export class Board {
   }
 
   private init(): void {
-    this.currentPosition = [];
     for (let x = 0; x < this.qt; x++) {
       let qtN = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       let tmpColumn = [];
@@ -22,7 +20,6 @@ export class Board {
         }
       }
       this.cardsMap.push(tmpColumn);
-      this.currentPosition.push(0);
     }
   }
 
@@ -36,14 +33,11 @@ export class Board {
     return this.cardsMap;
   }
 
-  public getCurrentPositions(): number[] {
-    return this.currentPosition;
-  }
 
   public showingData(row: number): number[][] {
     let result: number[][] = [];
     for (let i = 0; i < this.qt; i++) {
-      let tmp = this.cardsMap[i].slice(this.currentPosition[i], this.currentPosition[i] + row);
+      let tmp = this.cardsMap[i].slice(0, row);
       result.push(tmp);
     }
     return result;

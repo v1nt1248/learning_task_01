@@ -33,7 +33,7 @@ export class ShowSrv {
       }
       this.cellCoord.push(tmpColumn);
     }
-    console.log(this.cellCoord);
+    // console.log(this.cellCoord);
   }
 
   public showData(data: number[][]): void | boolean {
@@ -54,14 +54,14 @@ export class ShowSrv {
         cellElem.style.position = 'absolute';
         cellElem.style.width = `${this.cellSize.width}px`;
         cellElem.style.height = `${this.cellSize.height}px`;
-        cellElem.style.border = '1px solid rgba(0, 0, 0, 0.12)';
+        // cellElem.style.border = '1px solid rgba(0, 0, 0, 0.12)';
         cellElem.style.top = `${this.cellCoord[x][y].y}px`;
         cellElem.style.left = `${this.cellCoord[x][y].x}px`;
-        cellElem.style.textAlign = 'center';
-        cellElem.style.lineHeight = `${this.cellSize.height}px`;
-        cellElem.style.fontSize = '32px';
-        cellElem.style.fontWeight = 'bold';
-        cellElem.innerHTML = `${data[x][y]}`;
+        let path = `media/${(data[x][y] < 10) ? '0' + data[x][y] : data[x][y]}.png`;
+        cellElem.style.backgroundPosition = '50% 50%';
+        cellElem.style.backgroundRepeat = 'no-repeat';
+        cellElem.style.backgroundSize = 'contain';
+        cellElem.style.backgroundImage = `url(${path})`;
         this.parentElem.appendChild(cellElem);
       }
     }

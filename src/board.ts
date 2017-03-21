@@ -77,22 +77,50 @@ export class Board {
     this.animate();
   }
 
-  public run(qt: number): void {
-    let count = 0;
+  public run(qt: number): Promise<boolean> {
+    let promise = new Promise<boolean>((resolve, reject) => {
 
-    let timer = setInterval(() => {
-      let from = Math.floor(count / qt) + 1;
-      for (let i = from; i <= this.column; i++) {
-        this.tick(i);
-      }
-      this.animate();
+      let count = 0;
 
-      count += 1;
-      if (count >= (qt * this.column)) {
-        clearInterval(timer);
-        return;
-      }
-    }, 60);
+      let timer = setInterval(() => {
+        let from = Math.floor(count / qt) + 1;
+        for (let i = from; i <= this.column; i++) {
+          this.tick(i);
+        }
+        this.animate();
+  
+        count += 1;
+        if (count >= (qt * this.column)) {
+          clearInterval(timer);
+          resolve(true);
+        }
+      }, 40);
+
+    });
+
+    return promise.then(res => {
+      return true;
+    })
+
+
+    // let count = 0;
+
+    // let timer = setInterval(() => {
+    //   let from = Math.floor(count / qt) + 1;
+    //   for (let i = from; i <= this.column; i++) {
+    //     this.tick(i);
+    //   }
+    //   this.animate();
+
+    //   count += 1;
+    //   if (count >= (qt * this.column)) {
+    //     clearInterval(timer);
+    //     return;
+    //   }
+    // }, 60);
+
+
+
   }
     
   

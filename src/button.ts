@@ -25,11 +25,15 @@ export class Button {
   public setDisable(): void {
     this.isDisable = true;
     this.elem.style.backgroundImage = `url(${this.mode.disable})`;
+    this.elem.setAttribute('disabled', 'disabled');
+    this.elem.style.cursor = 'not-allowed';
   }
 
   public removeDisable(): void {
     this.isDisable = false;
     this.elem.style.backgroundImage = `url(${this.mode.normal})`;
+    this.elem.removeAttribute('disabled');
+    this.elem.style.cursor = 'pointer';
   }
 
   public set clickHandler(listener: EventListener) {

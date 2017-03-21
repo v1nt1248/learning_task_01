@@ -1,9 +1,12 @@
 import * as Lib from './lib';
 import { Button } from './button';
 import { Board } from './board';
-// import { ShowSrv } from './show';
+// import { Sound } from './sound';
 
 (function() {
+  // const processSound = new Sound('media/Reel_Spin.mp3');
+  // const stopSound = new Sound('media/Landing_1.mp3');
+  soundjs.Sound.registerSound("./media/Reel_Spin.mp3", 'sound', 4);
 
   const main = document.querySelector('.place');
   const refreshBtn = document.querySelector('#refresh');
@@ -15,7 +18,19 @@ import { Board } from './board';
   });
 
   but.clickHandler = () => {
-    board.run(2);
+    but.setDisable();
+    refreshBtn.setAttribute('disabled', 'disabled');
+    (refreshBtn as HTMLButtonElement).style.cursor = 'not-allowed';
+    // processSound.play();
+
+    board.run(10)
+      .then(res => {
+        // processSound.stop();
+        // stopSound.play();
+        but.removeDisable();
+        refreshBtn.removeAttribute('disabled');
+        (refreshBtn as HTMLButtonElement).style.cursor = 'pointer';
+      });
   }
 
 

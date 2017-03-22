@@ -62,6 +62,7 @@ export class Button {
 
   private changePressedFace(event: MouseEvent): void {
     this.elem.style.backgroundImage = `url(${this.mode.press})`;
+    this.elem.style.outlineWidth = '0';
   }
 
   private hoverHandler(event: MouseEvent): void {

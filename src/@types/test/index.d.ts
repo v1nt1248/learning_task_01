@@ -1,4 +1,4 @@
-/* v1nt1248 22.03 */
+/* create v1nt1248 22.03 */
 
 declare namespace test {
 

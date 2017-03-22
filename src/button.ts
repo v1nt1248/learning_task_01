@@ -1,3 +1,7 @@
+// interface TestButton {
+  
+// }
+
 export class Button {
   private mode: {[name: string]: string};
   private elem: HTMLButtonElement;
@@ -5,7 +9,7 @@ export class Button {
   private isDisable: boolean;
 
   constructor (
-    public id: string
+    private id: string
   ) {
     this.mode = {
       normal: './media/btn_spin_normal.png',

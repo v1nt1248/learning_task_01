@@ -5,7 +5,7 @@ export class Sound {
   private destination: AudioDestinationNode;
 
   constructor (
-    public pathFile: string
+    private pathFile: string
   ) {
     this.init();
   }

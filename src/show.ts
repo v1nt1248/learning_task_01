@@ -1,17 +1,14 @@
 import * as Lib from './lib';
 
 export class ShowSrv {
-  cellSize: {
-    width: number;
-    height: number;
-  };
-  cellCoord: {x: number, y: number}[][];
+  cellSize: test.Size;
+  cellCoord: test.Coords[][];
 
   constructor (
-    public parentElem: Element,
-    public coord: {x: number; y: number},
-    public size: {width: number; height: number},
-    public qt: {column: number; row: number}
+    private parentElem: Element,
+    private coord: test.Coords,
+    private size: test.Size,
+    private qt: test.Amt
   ) {
     this.init();
   }
@@ -54,7 +51,6 @@ export class ShowSrv {
         cellElem.style.position = 'absolute';
         cellElem.style.width = `${this.cellSize.width}px`;
         cellElem.style.height = `${this.cellSize.height}px`;
-        // cellElem.style.border = '1px solid rgba(0, 0, 0, 0.12)';
         cellElem.style.top = `${this.cellCoord[x][y].y}px`;
         cellElem.style.left = `${this.cellCoord[x][y].x}px`;
         let path = `media/${(data[x][y] < 10) ? '0' + data[x][y] : data[x][y]}.png`;

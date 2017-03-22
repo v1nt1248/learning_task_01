@@ -3,19 +3,14 @@ import { ShowSrv } from './show';
 
 export class Board {
   private cardsMap: number[][];
-  private placeCoord: {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-  };
+  private placeCoord: test.Geometric;
   private show: ShowSrv;
 
 
   constructor (
-    public column: number,
-    public row: number,
-    public place: Element
+    private column: number,
+    private row: number,
+    private place: Element
    ) {
     this.init();
     this.placeCoord = {

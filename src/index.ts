@@ -22,7 +22,7 @@ import { Sound } from './sound';
     (refreshBtn as HTMLButtonElement).style.cursor = 'not-allowed';
     processSound.play();
 
-    const count = Lib.randomInt(3, 15);
+    const count = Lib.randomInt(5, 20);
     console.info(`Кол-во символов прокрутки: ${count}`);
 
     board.run(count)
@@ -35,8 +35,6 @@ import { Sound } from './sound';
           (refreshBtn as HTMLButtonElement).style.cursor = 'pointer';
         }, 50);
       });
-  }
-
-
+  };
   
 })();

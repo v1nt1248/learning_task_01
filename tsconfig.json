@@ -8,10 +8,11 @@
         "noEmitOnError": true,
         "rootDir": "./src",
         "typeRoots": [
-            "node_modules/@types"
+            "./src/@types"
         ]
     },
     "exclude": [
-        "./node_modules"
+        "./node_modules",
+        "./src/@types"
     ]
 }

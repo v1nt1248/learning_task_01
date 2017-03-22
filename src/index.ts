@@ -1,12 +1,11 @@
 import * as Lib from './lib';
 import { Button } from './button';
 import { Board } from './board';
-// import { Sound } from './sound';
+import { Sound } from './sound';
 
 (function() {
-  // const processSound = new Sound('media/Reel_Spin.mp3');
-  // const stopSound = new Sound('media/Landing_1.mp3');
-  soundjs.Sound.registerSound("./media/Reel_Spin.mp3", 'sound', 4);
+  const processSound = new Sound('media/Reel_Spin.mp3');
+  const stopSound = new Sound('media/Landing_1.mp3');
 
   const main = document.querySelector('.place');
   const refreshBtn = document.querySelector('#refresh');
@@ -21,15 +20,20 @@ import { Board } from './board';
     but.setDisable();
     refreshBtn.setAttribute('disabled', 'disabled');
     (refreshBtn as HTMLButtonElement).style.cursor = 'not-allowed';
-    // processSound.play();
+    processSound.play();
 
-    board.run(10)
+    const count = Lib.randomInt(3, 15);
+    console.info(`Кол-во символов прокрутки: ${count}`);
+
+    board.run(count)
       .then(res => {
-        // processSound.stop();
-        // stopSound.play();
-        but.removeDisable();
-        refreshBtn.removeAttribute('disabled');
-        (refreshBtn as HTMLButtonElement).style.cursor = 'pointer';
+        processSound.stop();
+        setTimeout(() => {
+          stopSound.play();
+          but.removeDisable();
+          refreshBtn.removeAttribute('disabled');
+          (refreshBtn as HTMLButtonElement).style.cursor = 'pointer';
+        }, 50);
       });
   }
 
